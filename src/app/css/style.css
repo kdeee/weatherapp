@@ -1,0 +1,25 @@
+.search-bar{
+  text-align: center;
+}
+.search-bar input{
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid #7f4cc1;
+    border-radius: 4px 0 0 4px;
+    color: #777;
+    width: 500px;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+.weather-city-name ul li{
+    text-align: center;
+}
+.weather-city-name ul li img{
+     width: 59%;
+}
+span{
+    font-weight: bold;
+    font-family: Times New Roman;
+}
