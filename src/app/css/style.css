@@ -2,18 +2,12 @@ body{
     background-color: #000;
 }
 
-.search-bar{
-  text-align: center;
-}
-
-.search-bar input{
-    margin-top: 5px;
-    padding: 5px;
-    border: 1px solid #7f4cc1;
-    border-radius: 4px 0 0 4px;
-    color: #777;
-    width: 500px;
+.card-img-top{
+    width: 150px;
+    height: 100px;
     text-align: center;
+    margin-left: 85px;
+
 }
 
 .weather-city-name ul li{
@@ -22,21 +16,22 @@ body{
     background-color: #000;
     color: #fff;
 }
-.weather-city-name ul li img{
-    width: 62.40%;
 
-}
-.weather-city-info ul li{
-    border: 1px solid #fff;
-    border-radius: 2px;
-    background-color: #000;
-    color: #fff;
-}
 .weather-map{
-    height: 500px;
+    height: 645px;
 }
+
+.card{
+    margin-left: 100px;
+}
+
 
 span{
+    font-weight: bold;
+    font-family: Times New Roman;
+}
+
+h5{
     font-weight: bold;
     font-family: Times New Roman;
 }
@@ -52,3 +47,15 @@ h2{
     margin-left: 30px;
 }
 
+p, h4{
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+img{
+    margin-left: 30px;
+}
+
+[type="search"]{
+    width: 500px!important;
+}

@@ -22,7 +22,7 @@ class App extends Component {
 		 description: '',
 		 sunrise: '',
 		 sunset: '',
-		 notFound: ''
+		 notFound: 'Not Found'
 	}
 }
 	fetchCity(cityname) {
@@ -48,12 +48,11 @@ class App extends Component {
 				})
 			})
 			.catch((error) => {
-				console.log('City Not Found!')
 				this.setState({notFound: 'Not Found'})
 			})
 		}
 	componentDidMount() {
-		this.fetchCity(this.state.cityname);
+	     this.fetchCity(this.state.cityname);
 	}
 
 	render(){
@@ -61,21 +60,20 @@ class App extends Component {
 			<div>
 				<section id="info">
 					<SearchCity fetchCity={this.fetchCity.bind(this)}/>
-					<section className="weather-city row">
-						<div className="weather-info col-md-6 row">
-							<Weather data={this.state} />
-						</div>
-						<div className="weather-map col-md-6 row">
-							<WeatherMap data={this.state} />
-						</div>
-					</section>
+						<section className="weather-city row">
+							<div className="weather-info col-md-4 row">
+								<Weather data={this.state} />
+							</div>
+							<div className="weather-map col-md-8 row">
+								<WeatherMap data={this.state} />
+							</div>
+						</section>
 				</section>
 			</div>
 			)
+		}
 
 	}
-
-}
 
  
 ReactDOM.render(<App />, document.getElementById('app-container'));
