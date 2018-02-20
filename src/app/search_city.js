@@ -3,12 +3,18 @@ import React, {Component} from 'react'
 class SearchCity extends Component {
   render() {
     return (
-          <div className='search-bar'>
-            <form onSubmit={this.handleForm.bind(this)}>
-              <label><input type="search" ref="cityname" placeholder="Type Cityname + Enter"/></label>
-            </form>
-          </div>
-        )
+            <nav className="navbar navbar-dark bg-dark mb-2">
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <a className="navbar-brand text-light font-weight-bold">WEATHER APP</a>
+                </div>
+                <form className="form-inline" onSubmit={this.handleForm.bind(this)}>
+                  <input className="form-control mr-sm-2" type="search" ref="cityname" placeholder="Enter a City here" aria-label="Search"/>
+                  <button className="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+           )
      }
 
   handleForm(e) {
@@ -20,3 +26,4 @@ class SearchCity extends Component {
 }
 
 export default SearchCity
+

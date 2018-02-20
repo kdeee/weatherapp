@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import SearchCity from './search_city'
 import Weather from './weather'
+import WeatherMap from './map'
 
 
 const API_URL = 'http://api.openweathermap.org/data/2.5/weather?APPID=566701c984b0adfe199fa54416d59112&units=metric&q='
@@ -21,11 +22,9 @@ class App extends Component {
 		 description: '',
 		 sunrise: '',
 		 sunset: '',
-		 notFound: 'Not Found'
-}
-
-
+		 notFound: ''
 	}
+}
 	fetchCity(cityname) {
 		let api = `${API_URL}${cityname}`
 		fetch(api)
@@ -54,7 +53,7 @@ class App extends Component {
 			})
 		}
 	componentDidMount() {
-	     this.fetchCity(this.state.cityname);
+		this.fetchCity(this.state.cityname);
 	}
 
 	render(){
@@ -62,7 +61,14 @@ class App extends Component {
 			<div>
 				<section id="info">
 					<SearchCity fetchCity={this.fetchCity.bind(this)}/>
-					<Weather data={this.state} />
+					<section className="weather-city row">
+						<div className="weather-info col-md-6 row">
+							<Weather data={this.state} />
+						</div>
+						<div className="weather-map col-md-6 row">
+							<WeatherMap data={this.state} />
+						</div>
+					</section>
 				</section>
 			</div>
 			)
