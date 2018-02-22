@@ -8,19 +8,19 @@ class SearchCity extends Component {
                 <div className="input-group-prepend">
                   <a className="navbar-brand text-light font-weight-bold">WEATHER APP</a>
                 </div>
-                <form className="form-inline" onSubmit={this.handleForm.bind(this)}>
+                <form className="form-inline">
                   <input className="form-control mr-sm-2" type="search" ref="cityname" placeholder="Enter a City here" aria-label="Search"/>
-                  <button className="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+                  <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={(searchDefault) => this.handleForm(searchDefault)}>Search</button>
                 </form>
               </div>
             </nav>
            )
      }
 
-  handleForm(e) {
-   e.preventDefault();
-    let cityname = this.refs.cityname.value
-    this.props.fetchCity(cityname);
+  handleForm(searchDefault) {
+   searchDefault.preventDefault();
+    const city = this.refs.cityname.value
+    this.props.cityInfo(city);
     this.refs.cityname.value = '';  
   }
 }

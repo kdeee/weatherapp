@@ -3,10 +3,9 @@ body{
 }
 
 .card-img-top{
-    width: 150px;
-    height: 100px;
+    width: 30%;
     text-align: center;
-    margin-left: 85px;
+    margin-left: 100px;
 
 }
 
@@ -20,15 +19,17 @@ body{
 .weather-map{
     height: 645px;
 }
-
 .card{
     margin-left: 100px;
 }
 
 
-span{
+.list-group-item span:first-child{
     font-weight: bold;
     font-family: Times New Roman;
+}
+.list-group-item span:last-child{
+    float: right;
 }
 
 h5{

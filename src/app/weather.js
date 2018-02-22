@@ -1,34 +1,37 @@
 import React, {Component} from 'react'
-import {Button, Card, CardActions, CardText, CardTitle, List, ListItem} from 'react-md'
 
 
 
 class Weather extends Component {
 	dateConverter (unixTime){
-	let date = new Date(unixTime);
+	const date = new Date(unixTime);
 		let hours = date.getHours();
 		let minutes= date.getMinutes();
 		let ampm = hours >= 12 ? 'PM' : 'AM';
 		hours = hours % 12;
 		hours = hours ? hours : 12;
 		minutes = minutes < 10 ? '0'+minutes : minutes;
-		var dateString = hours+ ':' +minutes+ ' ' +ampm;
+		const dateString = hours+ ':' +minutes+ ' ' +ampm;
 
 		return dateString;
 	}
 
 		  render(){
-		    let data = this.props.data;
-		    if (data.notFound === 'Not Found')
+		    const {data} = this.props;
+		    if (data.message === "City not found")
 		    	return (
 		    		<div className="notFound">
-		    			<div className="card" style={{width: '20rem', marginTop: '80px'}}>
+		    			<div className="alert alert-warning" role="alert" style={{marginLeft: '25px', width: '450px'}}>
+					  		<strong>Warning!</strong> Check the spelling or add a city after the name. 
+					  		Example: <strong>"Cebu City"</strong>.
+						</div>
+		    			<div className="card" style={{width: '20rem', marginTop: '50px'}}>
 		    				<div className="card-header">
 								ERROR!
 							</div>
 			    			<img className="card-img-top" src="./app/img/error.png"/>
 				    			<div className="card-block">
-				    				<h4 className="card-title">City not found, please enter a city name!</h4>
+				    				<h4 className="card-title">{data.message}, please enter a city name!</h4>
 				    			</div>
 			    		</div>
 		    		</div>
@@ -47,18 +50,18 @@ class Weather extends Component {
 									    <p className="card-text">{data.country} <img src={`http://openweathermap.org/img/w/${data.icon}.png`} />{data.description}</p>
 								  </div>
 								  <ul className="list-group list-group-flush">
-									<li className="list-group-item temperature"><span>Temperature:</span> {data.temperature}<i>&#x2103;</i></li>
-									<li className="list-group-item longitude"><span>Longitude:</span> {data.longitude}</li>
-								  	<li className="list-group-item latitude"><span>Latitude:</span> {data.latitude}</li>
-								  	<li className="list-group-item humidity"><span>Humidity:</span> {data.humidity} <i>%</i></li>
-								 	<li className="list-group-item pressure"><span>Pressure:</span> {data.pressure} <i>hPa</i></li>
-								  	<li className="list-group-item wind"><span>Wind:</span> {data.wind} <i>km/h</i></li>
-								  	<li className="list-group-item wind"><span>Sunrise:</span> {this.dateConverter(data.sunrise * 1000)}</li>
-								  	<li className="list-group-item wind"><span>Sunset:</span> {this.dateConverter(data.sunset * 1000)}</li>
+									<li className="list-group-item temperature"><span>Temperature:</span><span>{data.temperature}<i>&#x2103;</i></span></li>
+									<li className="list-group-item longitude"><span>Longitude:</span><span>{data.longitude}</span></li>
+								  	<li className="list-group-item latitude"><span>Latitude:</span><span>{data.latitude}</span></li>
+								  	<li className="list-group-item humidity"><span>Humidity:</span><span>{data.humidity} <i>%</i></span></li>
+								 	<li className="list-group-item pressure"><span>Pressure:</span><span>{data.pressure} <i>hPa</i></span></li>
+								  	<li className="list-group-item wind"><span>Wind:</span><span>{data.wind} <i>km/h</i></span></li>
+								  	<li className="list-group-item wind"><span>Sunrise:</span><span>{this.dateConverter(data.sunrise * 1000)}</span></li>
+								  	<li className="list-group-item wind"><span>Sunset:</span><span>{this.dateConverter(data.sunset * 1000)}</span></li>
 								  </ul>
 						</div>
 					</div>		          		
-		        );
+		        )
 	    	}
 		       		
 		}

@@ -3,61 +3,45 @@ import ReactDOM from 'react-dom'
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
 
 class WeatherMap extends Component{
-	constructor(props) {
-    super(props);
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {}
-    }
-    
-    // binding this to event-handler functions
-    this.onMarkerClick = this.onMarkerClick.bind(this);
-    this.onMapClicked = this.onMapClicked.bind(this);
-  }
-  
-  onMarkerClick(props, marker) {
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-  }
-
-  onMapClicked(props) {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
-    }
-  }
-
 	render(){
+		const {cityData} = this.props;
+		if(cityData.message === 'City not found')
 		return(
-		<Map
-		onClick={this.onMapClicked}
-        google={this.props.google}
-        zoom={15}
-        center={{
-          lat: this.props.data.latitude,
-          lng: this.props.data.longitude
-        }}>
-        <Marker onClick={this.onMarkerClick}
-        		title={this.props.data.cityname}
-			    name={this.props.data.cityname}
-			    position={
-			    	{lat: this.props.data.latitude, lng: this.props.data.longitude}
-			    } />
-		<InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-            <div>
-              <h4>You are in {this.state.selectedPlace.name}</h4>
-            </div>
-        </InfoWindow>
-     	</Map>
-      )
+			<Map
+		        google={this.props.google}
+		        zoom={15}
+		        center={{
+		          lat: cityData.latitude,
+		          lng: cityData.longitude
+		        }}>
+				<InfoWindow
+		          visible={false}>
+		            <div>
+		              <h5>You are in {cityData.cityname}</h5>
+		            </div>
+		        </InfoWindow>
+     		</Map>
+     	)
+     	else{
+     		return(
+     			<Map
+			        google={this.props.google}
+			        zoom={15}
+			        center={{
+			          lat: cityData.latitude,
+			          lng: cityData.longitude
+			        }}>
+					<InfoWindow
+			        visible={true}
+			        position={
+						    	{lat: cityData.latitude, lng: cityData.longitude}
+						    }>
+			            <div>
+			              <h5>You are in {cityData.cityname}</h5>
+			            </div>
+			        </InfoWindow>
+		     	</Map>
+     		)}
 	}
 	
 }
