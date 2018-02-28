@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 
 
-class Weather extends Component {
+const Weather extends Component {
 	dateConverter (unixTime){
 	const date = new Date(unixTime);
 		let hours = date.getHours();
@@ -22,7 +22,7 @@ class Weather extends Component {
 		    	return (
 		    		<div className="notFound">
 		    			<div className="alert alert-warning" role="alert" style={{marginLeft: '25px', width: '450px'}}>
-					  		<strong>Warning!</strong> Check the spelling or add a city after the name. 
+					  		<strong>Warning!</strong> Check the spelling or add a city after the name.
 					  		Example: <strong>"Cebu City"</strong>.
 						</div>
 		    			<div className="card" style={{width: '20rem', marginTop: '50px'}}>
@@ -38,7 +38,7 @@ class Weather extends Component {
 		    		);
 		    else{
 		    	return(
-		    			
+
 					<div className='col-md-12 row'>
 		    			<div className="card" style={{width: '20rem'}}>
 		    				<div className="card-header">
@@ -60,10 +60,10 @@ class Weather extends Component {
 								  	<li className="list-group-item wind"><span>Sunset:</span><span>{this.dateConverter(data.sunset * 1000)}</span></li>
 								  </ul>
 						</div>
-					</div>		          		
+					</div>
 		        )
 	    	}
-		       		
+
 		}
 	}
 

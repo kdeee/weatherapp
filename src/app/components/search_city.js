@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class SearchCity extends Component {
+const SearchCity = (props) => {
   render() {
     return (
             <nav className="navbar navbar-dark bg-dark mb-2">
@@ -21,9 +21,8 @@ class SearchCity extends Component {
    searchDefault.preventDefault();
     const city = this.refs.cityname.value
     this.props.cityInfo(city);
-    this.refs.cityname.value = '';  
+    this.refs.cityname.value = '';
   }
 }
 
 export default SearchCity
-
