@@ -2,13 +2,12 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
 
-class WeatherMap extends Component{
-	render(){
-		const {cityData} = this.props;
+const WeatherMap = (props) => {
+		const {cityData} = props
 		if(cityData.message === 'City not found')
 		return(
 			<Map
-		        google={this.props.google}
+		        google={props.google}
 		        zoom={15}
 		        center={{
 		          lat: cityData.latitude,
@@ -25,7 +24,7 @@ class WeatherMap extends Component{
      	else{
      		return(
      			<Map
-			        google={this.props.google}
+			        google={props.google}
 			        zoom={15}
 			        center={{
 			          lat: cityData.latitude,
@@ -42,9 +41,8 @@ class WeatherMap extends Component{
 			        </InfoWindow>
 		     	</Map>
      		)}
-	}
-	
-}
+
+			}
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyA2g3QeaJ16yYPrXFwAlTLW0ypJPLeR_V0'
