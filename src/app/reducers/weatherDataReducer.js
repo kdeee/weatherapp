@@ -17,8 +17,8 @@ const weatherState = {
 const weatherDataReducer = (state = weatherState, action) => {
   switch (action.type) {
     case 'SEARCH_CITY':
-        return {
-          //...state,
+        return Object.assign({}, state,{
+
           cityname: action.payload.cityname,
           country: action.payload.country,
           longitude: action.payload.longitude,
@@ -32,7 +32,7 @@ const weatherDataReducer = (state = weatherState, action) => {
           sunrise: action.payload.sunrise,
           sunset: action.payload.sunset,
           message: action.payload.message
-        }
+        })
 
   }
   return state;

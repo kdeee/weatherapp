@@ -9,9 +9,9 @@ import {fetchCity} from '../actions/weatherDataAction'
 class App extends Component {
 
 
-	//componentDidMount() {
-	     //this.fetchCity(this.state.cityname);
-	//}
+	// componentWillMount() {
+	//      console.log(this.props);
+	// }
 
 	render(){
 		return(
@@ -34,6 +34,7 @@ class App extends Component {
 	}
 
 	const mapStateToProps = (state) => {
+		//console.log(state)
 		return {
 			weatherData: state
 		}
@@ -42,7 +43,6 @@ class App extends Component {
 	const mapDispatchToProps = (dispatch) => {
 		return {
 			fetchCity : (city) => {
-				//console.log(city)
 				dispatch(fetchCity(city))
 			}
 		}

@@ -16,7 +16,6 @@ const date = new Date(unixTime);
 
 
 const Weather = (props) => {
-	console.log(props)
 		    if(props.data.message === "City not found")
 		    	return (
 		    		<div className="notFound">
